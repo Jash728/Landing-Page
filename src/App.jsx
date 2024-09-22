@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   LightBulbIcon,
   CalendarIcon,
@@ -24,7 +24,7 @@ const LandingPage = () => {
     <div className="min-h-screen bg-[#FFFDF5] font-sans">
       <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-between items-center sticky top-0 z-50">
         <div className="flex items-center">
-          <img src="public/logo.png" alt="Logo" className="h-14 w-auto" />
+          <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
         </div>
         <nav>
           <ul className="flex space-x-8 text-[#181818] text-lg">
@@ -45,7 +45,6 @@ const LandingPage = () => {
       </header>
 
       <section className="flex flex-col items-center justify-center text-center px-6 py-16">
-        
         <h2
           className="text-5xl md:text-5xl font-bold text-[#b3663f] leading-tight animate-bounce"
           style={{ fontFamily: "Dela Gothic One" }}
@@ -103,10 +102,11 @@ const LandingPage = () => {
         </a>
 
         <p className="mt-4 text-[#181818] text-lg font-semibold text-center relative">
-  Can you guess what it’ll be? 
-  <span className="underline decoration-[#EB7A52] decoration-2">______</span>
-</p>
-
+          Can you guess what it’ll be?
+          <span className="underline decoration-[#EB7A52] decoration-2">
+            ______
+          </span>
+        </p>
       </section>
 
       <footer className="py-6 text-center text-[#181818]">
