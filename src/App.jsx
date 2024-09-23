@@ -4,6 +4,7 @@ import {
   CalendarIcon,
   ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/solid";
+import logo from './assets/logo.png';
 
 const taglines = [
   "Struggling to Connect with Your Audience?",
@@ -25,7 +26,7 @@ const LandingPage = () => {
       
       <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-center items-center sticky top-0 z-50">
         <div className="flex items-center justify-center">
-          <img src="/logo.png?v=1" alt="Logo" className="h-14 w-auto" />
+          <img src={logo} alt="Logo" className="h-14 w-auto" />
         </div>
       </header>
 
