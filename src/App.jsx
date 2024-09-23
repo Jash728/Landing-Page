@@ -25,7 +25,7 @@ const LandingPage = () => {
       
       <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-center items-center sticky top-0 z-50">
         <div className="flex items-center justify-center">
-          <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
+          <img src="/public/logo.png" alt="Logo" className="h-14 w-auto" />
         </div>
       </header>
 
