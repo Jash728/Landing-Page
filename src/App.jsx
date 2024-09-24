@@ -4,7 +4,7 @@ import {
   CalendarIcon,
   ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/solid";
-import logo from './assets/logo.png';
+import logo from "./assets/logo.png";
 
 const taglines = [
   "Struggling to Connect with Your Audience?",
@@ -23,41 +23,29 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FFFDF5] font-sans">
-      
       <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-center items-center sticky top-0 z-50">
         <div className="flex items-center justify-center">
           <img src={logo} alt="Logo" className="h-14 w-auto" />
         </div>
       </header>
 
-      
-      <section className="flex flex-col items-center justify-center text-center px-6 py-16">
+      <section className="flex flex-col items-center justify-center text-center px-6 py-10">
         <h2
-          className="text-5xl md:text-5xl font-bold text-[#b3663f] leading-tight animate-bounce"
+          className="text-5xl md:text-5xl font-bold text-[#EB7A52] leading-tight animate-bounce"
           style={{ fontFamily: "Dela Gothic One" }}
         >
           {tagline}
         </h2>
 
         <p
-          className="mt-4 text-[#181818] text-lg md:text-xl font-medium"
+          className="mt-8 text-[#2e2e2e] text-lg md:text-xl font-semibold"
           style={{ fontFamily: "Montserrat" }}
         >
           Every creator needs to be a brand & every brand needs to be a creator.
         </p>
 
-       
         <div className="mt-8 text-[#181818]">
-          <h3
-            className="text-3xl font-semibold mb-6"
-            style={{ fontFamily: "Montserrat" }}
-          >
-            Turn confusion into clarity!
-          </h3>
-
-          
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-           
             <div className="flex flex-col items-center p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 bg-[#F0F871]">
               <LightBulbIcon className="h-12 w-12 text-black mb-3" />
               <h4 className="text-xl font-semibold text-black mt-2">
@@ -68,7 +56,6 @@ const LandingPage = () => {
               </p>
             </div>
 
-            
             <div className="flex flex-col items-center p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 bg-[#F0F871]">
               <ChatBubbleLeftRightIcon className="h-12 w-12 text-black mb-3" />
               <h4 className="text-xl font-semibold text-black mt-2">
@@ -79,7 +66,6 @@ const LandingPage = () => {
               </p>
             </div>
 
-           
             <div className="flex flex-col items-center p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 bg-[#F0F871]">
               <CalendarIcon className="h-12 w-12 text-black mb-3" />
               <h4 className="text-xl font-semibold text-black mt-2">
@@ -94,20 +80,15 @@ const LandingPage = () => {
 
         <p className="mt-8 text-[#5f5c5c] text-lg text-center relative">
           Ready to simplify your content game?
-         
         </p>
         <a
           href="#"
           className="mt-8 bg-[#EB7A52] text-white py-3 px-6 rounded-full hover:bg-[#2127F6] hover:text-[#ffffff] transition-all duration-300 text-lg font-semibold shadow-md transform hover:scale-105"
         >
-          Join the Klque Tribe
+          Join the Tribe!
         </a>
-
-        
-        
       </section>
 
-      
       <footer className="py-6 text-center text-[#181818]">
         &copy; 2024 Klque Tribe. All rights reserved.
       </footer>
