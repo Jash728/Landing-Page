@@ -92,21 +92,19 @@ const LandingPage = () => {
           </div>
         </div>
 
-        
+        <p className="mt-8 text-[#5f5c5c] text-lg text-center relative">
+          Ready to simplify your content game?
+         
+        </p>
         <a
           href="#"
-          className="mt-8 bg-[#EB7A52] text-white py-3 px-6 rounded-full hover:bg-[#F0F871] hover:text-[#181818] transition-all duration-300 text-lg font-semibold shadow-md transform hover:scale-105"
+          className="mt-8 bg-[#EB7A52] text-white py-3 px-6 rounded-full hover:bg-[#2127F6] hover:text-[#ffffff] transition-all duration-300 text-lg font-semibold shadow-md transform hover:scale-105"
         >
           Join the Klque Tribe
         </a>
 
         
-        <p className="mt-4 text-[#181818] text-lg font-semibold text-center relative">
-          Can you guess what it’ll be?
-          <span className="underline decoration-[#EB7A52] decoration-2">
-            ______
-          </span>
-        </p>
+        
       </section>
 
       
