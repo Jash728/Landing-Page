@@ -62,7 +62,7 @@ const LandingPage = () => {
                 Spark Ideas
               </h4>
               <p className="text-lg text-center font-medium text-black mt-1">
-                Generate and organize content that speaks directly to them.
+                Generate ideas, hooks, scripts without burning out.
               </p>
             </div>
 
