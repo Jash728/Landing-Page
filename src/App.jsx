@@ -131,7 +131,7 @@ const LandingPage = () => {
             <span className="text-lg font-semibold">Email</span>
           </a>
           <a
-            href="https://www.instagram.com/your-instagram"
+            href="https://www.instagram.com/klque.ai?igsh=MW9mcXl3N2dlc3R3MQ=="
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 text-[#EB7A52] hover:text-[#2127F6] transition-colors"
