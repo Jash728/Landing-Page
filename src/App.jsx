@@ -4,6 +4,7 @@ import {
   CalendarIcon,
   ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/solid";
+import { FaInstagram, FaEnvelope } from "react-icons/fa"; // Importing icons from react-icons
 import logo from "./assets/logo.png";
 
 const taglines = [
@@ -89,6 +90,29 @@ const LandingPage = () => {
         </a>
       </section>
 
+      {/* Email and Instagram Section */}
+      <section className="py-6 text-center">
+        <div className="flex justify-center items-center space-x-4">
+          <a
+            href="mailto:your-email@example.com"
+            className="flex items-center space-x-2 text-[#EB7A52] hover:text-[#2127F6] transition-colors"
+          >
+            <FaEnvelope className="h-5 w-5" />
+            <span>Email</span>
+          </a>
+          <a
+            href="https://www.instagram.com/klque.ai?igsh=MW9mcXl3N2dlc3R3MQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-[#EB7A52] hover:text-[#2127F6] transition-colors"
+          >
+            <FaInstagram className="h-5 w-5" />
+            <span>Instagram</span>
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className="py-6 text-center text-[#181818]">
         &copy; 2024 Klque Tribe. All rights reserved.
       </footer>
