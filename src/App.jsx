@@ -139,7 +139,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      
       <footer className="py-6 text-center text-[#181818]">
         &copy; 2024 Klque Tribe. All rights reserved.
       </footer>
