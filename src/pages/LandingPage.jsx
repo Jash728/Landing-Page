@@ -32,16 +32,6 @@ const LandingPage = () => {
     setTagline(randomTagline);
   }, []);
 
-  // const handleEmailChange = (e) => {
-  //   setEmail(e.target.value);
-  // };
-
-  // const handleEmailSubmit = (e) => {
-  //   e.preventDefault();
-  //   alert(`Thank you for subscribing with: ${email}`);
-  //   setEmail("");
-  // };
-
   const handleModalOpen = () => {
     setIsModalOpen(true);
   };
