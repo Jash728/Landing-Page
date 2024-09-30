@@ -244,7 +244,7 @@ const LandingPage = () => {
             <span>Email</span>
           </a>
           <a
-            href="https://www.instagram.com/your-instagram-handle"
+            href="https://www.instagram.com/klque.ai?igsh=MW9mcXl3N2dlc3R3MQ=="
             className="flex items-center space-x-1 text-[#EB7A52] hover:text-[#2127F6]"
           >
             <FaInstagram />
