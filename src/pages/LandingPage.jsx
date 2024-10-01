@@ -253,7 +253,7 @@ const LandingPage = () => {
         </div>
       </section>
       <footer className="py-6 text-center text-[#181818]">
-        &copy; 2024 Klque.ai. All rights reserved.
+        &copy; 2024 Klque.ai.  All rights reserved.
       </footer>
     </div>
   );
