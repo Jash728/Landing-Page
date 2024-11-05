@@ -7,6 +7,7 @@ import {
 import { FaInstagram, FaEnvelope } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import Modal from "../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 
 const taglines = [
@@ -27,6 +28,13 @@ const LandingPage = () => {
     profession: "",
   });
   const [successMessage, setSuccessMessage] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleAiIconClick = () => {
+    navigate("/ai-page");
+  }
+
   useEffect(() => {
     const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
     setTagline(randomTagline);
@@ -255,6 +263,12 @@ const LandingPage = () => {
       <footer className="py-6 text-center text-[#181818]">
         &copy; 2024 Klque.ai.  All rights reserved.
       </footer>
+      <button
+        onClick={handleAiIconClick}
+        className="fixed bottom-5 right-5 bg-[#EB7A52] p-3 rounded-full text-white hover:bg-[#2127F6] transition-all duration-300"
+      >
+        <LightBulbIcon className="h-6 w-6" />
+      </button>
     </div>
   );
 };
