@@ -9,7 +9,6 @@ import logo from "../assets/logo.png";
 import Modal from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 
-
 const taglines = [
   "Struggling to Connect with Your Audience?",
   "Still following viral trends but not growing your socials?",
@@ -26,14 +25,17 @@ const LandingPage = () => {
     phone: "",
     email: "",
     profession: "",
+    otherProfession: "",
+    projectThoughts: "",
   });
+  const [showOtherProfession, setShowOtherProfession] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
 
   const navigate = useNavigate();
 
   const handleAiIconClick = () => {
     navigate("/ai-page");
-  }
+  };
 
   useEffect(() => {
     const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
@@ -54,50 +56,54 @@ const LandingPage = () => {
       ...prevData,
       [name]: value,
     }));
+
+    if (name === "profession" && value === "Other") {
+      setShowOtherProfession(true);
+    } else if (name === "profession") {
+      setShowOtherProfession(false);
+    }
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const formData = {
-      name: event.target.name.value,
-      phone: event.target.phone.value,
-      email: event.target.email.value,
-      profession: event.target.profession.value,
+    const dataToSubmit = {
+      ...formData,
+      profession: formData.profession === "Other" ? formData.otherProfession : formData.profession,
     };
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbx2gfEVfgRkGjB7R1Vt5V5CWu1GvyLNu_CLRgXzk4k_yuXAhzWAEXd0FP2j-vvbhiPm/exec",
+        "https://script.google.com/macros/s/AKfycbx456e44edrRDkGD_WirqxJpPdGxdKkDl_-SrdX-vrQVa43lqAFt6WF3ezT_t5Qzc7O/exec",
         {
           method: "POST",
           mode: "no-cors",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(dataToSubmit),
         }
       );
 
       console.log(response);
       console.log("Form submitted!");
 
-     
       setSuccessMessage(true);
       setFormData({
         name: "",
         phone: "",
         email: "",
         profession: "",
-      })
-      
+        otherProfession: "",
+        projectThoughts: "",
+      });
+
       event.target.reset();
 
-     
       setTimeout(() => {
-        setSuccessMessage(false); 
-        handleModalClose(); 
-      }, 3000); 
+        setSuccessMessage(false);
+        handleModalClose();
+      }, 3000);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -128,7 +134,6 @@ const LandingPage = () => {
 
         <div className="mt-8 text-[#181818]">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-           
             <div className="flex flex-col items-center p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 bg-[#F0F871]">
               <LightBulbIcon className="h-12 w-12 text-black mb-3" />
               <h4 className="text-xl font-semibold text-black mt-2">
@@ -138,7 +143,7 @@ const LandingPage = () => {
                 Define what resonates with your audience.
               </p>
             </div>
-            
+
             <div className="flex flex-col items-center p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 bg-[#F0F871]">
               <ChatBubbleLeftRightIcon className="h-12 w-12 text-black mb-3" />
               <h4 className="text-xl font-semibold text-black mt-2">
@@ -148,7 +153,7 @@ const LandingPage = () => {
                 Generate ideas, hooks, scripts without burning out.
               </p>
             </div>
-           
+
             <div className="flex flex-col items-center p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 bg-[#F0F871]">
               <CalendarIcon className="h-12 w-12 text-black mb-3" />
               <h4 className="text-xl font-semibold text-black mt-2">
@@ -176,9 +181,6 @@ const LandingPage = () => {
       </section>
 
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
-        
-
-       
         {successMessage ? (
           <div className="text-center text-green-500 font-semibold">
             You're on the waitlist! 🎉 Stay locked in on our socials—big things
@@ -186,62 +188,84 @@ const LandingPage = () => {
           </div>
         ) : (
           <>
-          <h3 className="text-2xl font-bold mb-4">Join the Tribe</h3>
-          <form onSubmit={handleFormSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="w-full mb-4 p-3 border rounded-lg"
-              required
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Your Phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="w-full mb-4 p-3 border rounded-lg"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="w-full mb-4 p-3 border rounded-lg"
-              required
-            />
-            <select
-              name="profession"
-              value={formData.profession}
-              onChange={handleInputChange}
-              className="w-full mb-4 p-3 border rounded-lg"
-              required
-            >
-              <option value="" disabled>
-                Select Your Profession
-              </option>
-              <option value="Social Media Manager">Social Media Manager</option>
-              <option value="Content Creator">Content Creator</option>
-              <option value="Brand Owner">Brand Owner</option>
-              <option value="Startup Founder">Startup Founder</option>
-            </select>
-            <button
-              type="submit"
-              className="w-full bg-[#EB7A52] text-white py-3 px-4 rounded-full hover:bg-[#2127F6] transition-all duration-300"
-            >
-              Submit
-            </button>
-          </form>
+            <h3 className="text-2xl font-bold mb-4">Join the Tribe</h3>
+            <form onSubmit={handleFormSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full mb-4 p-3 border rounded-lg"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full mb-4 p-3 border rounded-lg"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full mb-4 p-3 border rounded-lg"
+                required
+              />
+              <select
+                name="profession"
+                value={formData.profession}
+                onChange={handleInputChange}
+                className="w-full mb-4 p-3 border rounded-lg"
+                required
+              >
+                <option value="" disabled>
+                  Select Your Profession
+                </option>
+                <option value="Social Media Manager">Social Media Manager</option>
+                <option value="Content Creator">Content Creator</option>
+                <option value="Brand Owner">Brand Owner</option>
+                <option value="Startup Founder">Startup Founder</option>
+                <option value="Other">Other</option>
+              </select>
+
+              {showOtherProfession && (
+                <input
+                  type="text"
+                  name="otherProfession"
+                  placeholder="Please specify your profession"
+                  value={formData.otherProfession}
+                  onChange={handleInputChange}
+                  className="w-full mb-4 p-3 border rounded-lg"
+                  required
+                />
+              )}
+
+              <textarea
+                name="projectThoughts"
+                placeholder="What do you think we are building?"
+                value={formData.projectThoughts}
+                onChange={handleInputChange}
+                className="w-full mb-4 p-3 border rounded-lg"
+                rows="3"
+                required
+              ></textarea>
+
+              <button
+                type="submit"
+                className="w-full bg-[#EB7A52] text-white py-3 rounded-full hover:bg-[#2127F6] transition-all duration-300"
+              >
+                Submit
+              </button>
+            </form>
           </>
-         
         )}
       </Modal>
-
       <section className="py-3 text-center">
         <div className="flex justify-center items-center space-x-4">
           <a
