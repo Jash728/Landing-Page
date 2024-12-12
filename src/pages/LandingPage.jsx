@@ -123,7 +123,7 @@ const LandingPage = () => {
   </div>
 
  
-  {/* <div className="flex items-center">
+  <div className="flex items-center">
     <p className="text-lg font-semibold text-[#2e2e2e] mr-4">
       Welcome, {user || "Guest"}!
     </p>
@@ -139,7 +139,7 @@ const LandingPage = () => {
     >
       Logout
     </button>
-  </div> */}
+  </div>
 </header>
 
 
