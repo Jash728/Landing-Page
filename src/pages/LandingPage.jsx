@@ -20,7 +20,7 @@ const LandingPage = () => {
   const [tagline, setTagline] = useState("");
   const [email, setEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [user, setUser] = useState("Guest" ); 
+  const [user, setUser] = useState("Guest");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -34,18 +34,16 @@ const LandingPage = () => {
 
   const navigate = useNavigate();
 
-
-
   useEffect(() => {
     const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
     setTagline(randomTagline);
 
     const loggedUser = localStorage.getItem("userName");
-    console.log(loggedUser) // Replace with your login mechanism
+    console.log(loggedUser); 
     if (loggedUser) {
       setUser(loggedUser);
     }
-    console.log(user)
+    console.log(user);
   }, []);
 
   const handleModalOpen = () => {
@@ -75,7 +73,10 @@ const LandingPage = () => {
 
     const dataToSubmit = {
       ...formData,
-      profession: formData.profession === "Other" ? formData.otherProfession : formData.profession,
+      profession:
+        formData.profession === "Other"
+          ? formData.otherProfession
+          : formData.profession,
     };
 
     try {
@@ -117,32 +118,32 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FFFDF5] font-sans">
-       <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-between items-center sticky top-0 z-50">
-  {/* Logo Section */}
-  <div className="flex items-center">
-    <img src={logo} alt="Logo" className="h-14 w-auto" />
-  </div>
+      <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-between items-center sticky top-0 z-50">
+       
+        <div className="flex items-center">
+          <img src={logo} alt="Logo" className="h-14 w-auto" />
+        </div>
 
- 
-  <div className="flex items-center">
-    <p className="text-lg font-semibold text-[#2e2e2e] mr-4">
-      Welcome, {user || "Guest"}!
-    </p>
-    <button
-      onClick={() => {
-        
-        localStorage.removeItem("userName");
-
-        
-        navigate("/");
-      }}
-      className="bg-[#EB7A52] text-white px-4 py-2 rounded-lg hover:bg-[#2127F6] transition-all duration-300"
-    >
-      Logout
-    </button>
-  </div>
-</header>
-
+        <div className="flex items-center">
+          <p className="text-lg font-semibold text-[#2e2e2e] mr-4">
+            Welcome, {user || "Guest"}!
+          </p>
+          <button
+            onClick={() => {
+              localStorage.removeItem("userName");
+              navigate("/");
+            }}
+            className="p-2 bg-transparent rounded-full hover:bg-[#EB7A52] transition-all duration-300"
+            title="Logout"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png" // Replace with your desired logo URL
+              alt="Logout"
+              className="h-8 w-8"
+            />
+          </button>
+        </div>
+      </header>
 
       <section className="flex flex-col items-center justify-center text-center px-6 py-10">
         <h2
@@ -254,7 +255,9 @@ const LandingPage = () => {
                 <option value="" disabled>
                   Select Your Profession
                 </option>
-                <option value="Social Media Manager">Social Media Manager</option>
+                <option value="Social Media Manager">
+                  Social Media Manager
+                </option>
                 <option value="Content Creator">Content Creator</option>
                 <option value="Brand Owner">Brand Owner</option>
                 <option value="Startup Founder">Startup Founder</option>
@@ -312,7 +315,7 @@ const LandingPage = () => {
         </div>
       </section>
       <footer className="py-6 text-center text-[#181818]">
-        &copy; 2024 Klque.ai.  All rights reserved.
+        &copy; 2024 Klque.ai. All rights reserved.
       </footer>
     </div>
   );

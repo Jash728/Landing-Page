@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../firebase"; // Your Firebase config
+import { auth, db } from "../firebase";
 import logo from "../assets/logo.png";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify"; // Ensure ToastContainer is imported
 import "react-toastify/dist/ReactToastify.css";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState(""); // New field for username
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -25,15 +25,24 @@ const SignUpPage = () => {
 
       const user = userCredential.user;
 
-      // Save additional user information in Firestore
+      // Update display name in Firebase Authentication
+      await updateProfile(user, {
+        displayName: username,
+      });
+
+      // Save user data to Firestore
       await setDoc(doc(db, "users", user.uid), {
         username: username,
         email: email,
       });
 
+      // Show success toast and redirect
       toast.success("Sign-Up Successful! Redirecting...");
-      setTimeout(() => navigate("/landing"), 2000); // Redirect after 2 seconds
+      setTimeout(() => {
+        navigate("/"); // Redirect to the login page or home page
+      }, 3000); // Match the Toast's autoClose duration
     } catch (error) {
+      // Display error toast
       toast.error(`Error: ${error.message}`);
     }
   };
@@ -45,7 +54,7 @@ const SignUpPage = () => {
         <img src={logo} alt="Logo" className="h-14 w-auto" />
       </header>
 
-      {/* Main Section */}
+      {/* Main Content */}
       <main className="flex flex-col items-center text-center mt-8 px-6">
         <h2 className="text-5xl font-bold text-[#EB7A52] leading-tight">
           Create Your Account
@@ -54,7 +63,7 @@ const SignUpPage = () => {
           Sign up with your email to get started.
         </p>
 
-        {/* Email/Password Form */}
+        {/* Sign-Up Form */}
         <form onSubmit={handleSignUp} className="w-full max-w-md">
           <input
             type="text"
@@ -88,7 +97,7 @@ const SignUpPage = () => {
           </button>
         </form>
 
-        {/* Go Back to Login */}
+        {/* Navigation to Login */}
         <p className="mt-4 text-[#2e2e2e] text-sm">
           Already have an account?{" "}
           <button
@@ -104,13 +113,14 @@ const SignUpPage = () => {
       <ToastContainer
         position="top-right"
         autoClose={3000}
-        hideProgressBar
-        newestOnTop
+        hideProgressBar={false}
+        newestOnTop={true}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme="colored"
       />
     </div>
   );
