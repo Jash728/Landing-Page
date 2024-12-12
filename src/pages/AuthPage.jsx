@@ -62,7 +62,7 @@ const AuthPage = () => {
           Welcome Back!
         </h2>
         <p className="mt-6 text-[#2e2e2e] text-lg font-semibold">
-          Login to unlock your creative journey.
+          Login to unlock your creative journey
         </p>
 
         
