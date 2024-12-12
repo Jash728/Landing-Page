@@ -1,20 +1,40 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import AiPage from "./pages/AiPage";
+import { Suspense, lazy } from "react";
+
+// Lazy load pages
+const AuthPage = lazy(() => import("./pages/AuthPage"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage"));
+const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LandingPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AuthPage />
+      </Suspense>
+    ),
   },
   {
-    path:"/ai-page",
-    element:<AiPage/>
-  }
+    path: "/signup",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <SignUpPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/landing",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LandingPage />
+      </Suspense>
+    ),
+  },
 ]);
 
-const App = () => {
+function App() {
   return <RouterProvider router={router} />;
-};
+}
 
 export default App;

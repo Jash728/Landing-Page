@@ -20,6 +20,7 @@ const LandingPage = () => {
   const [tagline, setTagline] = useState("");
   const [email, setEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [user, setUser] = useState({ name: "Guest" }); 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -33,13 +34,17 @@ const LandingPage = () => {
 
   const navigate = useNavigate();
 
-  const handleAiIconClick = () => {
-    navigate("/ai-page");
-  };
+
 
   useEffect(() => {
     const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
     setTagline(randomTagline);
+
+    const loggedUser = localStorage.getItem("userName");
+    console.log(loggedUser) // Replace with your login mechanism
+    if (loggedUser) {
+      setUser(loggedUser);
+    }
   }, []);
 
   const handleModalOpen = () => {
@@ -111,11 +116,32 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FFFDF5] font-sans">
-      <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-center items-center sticky top-0 z-50">
-        <div className="flex items-center justify-center">
-          <img src={logo} alt="Logo" className="h-14 w-auto" />
-        </div>
-      </header>
+       <header className="w-full py-6 px-10 bg-[#FFFDF5] flex justify-between items-center sticky top-0 z-50">
+  {/* Logo Section */}
+  <div className="flex items-center">
+    <img src={logo} alt="Logo" className="h-14 w-auto" />
+  </div>
+
+  {/* User Info and Logout Button */}
+  <div className="flex items-center">
+    <p className="text-lg font-semibold text-[#2e2e2e] mr-4">
+      Welcome, {user || "Guest"}!
+    </p>
+    <button
+      onClick={() => {
+        // Clear user-related data from localStorage
+        localStorage.removeItem("userName");
+
+        // Redirect to login page
+        navigate("/");
+      }}
+      className="bg-[#EB7A52] text-white px-4 py-2 rounded-lg hover:bg-[#2127F6] transition-all duration-300"
+    >
+      Logout
+    </button>
+  </div>
+</header>
+
 
       <section className="flex flex-col items-center justify-center text-center px-6 py-10">
         <h2
@@ -287,12 +313,6 @@ const LandingPage = () => {
       <footer className="py-6 text-center text-[#181818]">
         &copy; 2024 Klque.ai.  All rights reserved.
       </footer>
-      <button
-        onClick={handleAiIconClick}
-        className="fixed bottom-5 right-5 bg-[#EB7A52] p-3 rounded-full text-white hover:bg-[#2127F6] transition-all duration-300"
-      >
-        <LightBulbIcon className="h-6 w-6" />
-      </button>
     </div>
   );
 };
