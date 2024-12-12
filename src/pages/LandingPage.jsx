@@ -122,24 +122,24 @@ const LandingPage = () => {
     <img src={logo} alt="Logo" className="h-14 w-auto" />
   </div>
 
-  {/* User Info and Logout Button */}
-  <div className="flex items-center">
+ 
+  {/* <div className="flex items-center">
     <p className="text-lg font-semibold text-[#2e2e2e] mr-4">
       Welcome, {user || "Guest"}!
     </p>
     <button
       onClick={() => {
-        // Clear user-related data from localStorage
+        
         localStorage.removeItem("userName");
 
-        // Redirect to login page
+        
         navigate("/");
       }}
       className="bg-[#EB7A52] text-white px-4 py-2 rounded-lg hover:bg-[#2127F6] transition-all duration-300"
     >
       Logout
     </button>
-  </div>
+  </div> */}
 </header>
 
 
