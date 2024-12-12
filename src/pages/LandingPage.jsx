@@ -20,7 +20,7 @@ const LandingPage = () => {
   const [tagline, setTagline] = useState("");
   const [email, setEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [user, setUser] = useState({ name: "Guest" }); 
+  const [user, setUser] = useState("Guest" ); 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -45,6 +45,7 @@ const LandingPage = () => {
     if (loggedUser) {
       setUser(loggedUser);
     }
+    console.log(user)
   }, []);
 
   const handleModalOpen = () => {
